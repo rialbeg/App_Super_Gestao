@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,5 +18,12 @@ use App\Http\Controllers\ContatoController;
 */
 
 Route::get('/', [HomeController::class, 'index']);
-Route::get('/sobrenos',[SobreNosController::class, 'index']);
+Route::get('/sobrenos', [SobreNosController::class, 'index']);
 Route::get('/contato', [ContatoController::class, 'index']);
+Route::get('/login', [ContatoController::class, 'index']);
+
+Route::prefix('app')->group(function () {
+    Route::get('/clientes', [ContatoController::class, 'index']);
+    Route::get('/fornecedores', [ContatoController::class, 'index']);
+    Route::get('/produtos', [ContatoController::class, 'index']);
+});
