@@ -26,3 +26,7 @@ Route::prefix('app')->group(function () {
     Route::get('/fornecedores', [ContatoController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', [ContatoController::class, 'index'])->name('app.produtos');
 });
+
+Route::fallback(function () {
+    echo 'Página não existe. <a href="'.route('site.index').'">Clique aqui</a> para retornar para a página inicial.';
+});
